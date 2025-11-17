@@ -1,0 +1,65 @@
+entities:
+  com.meta.models.Scene:
+    - components:
+        com.meta.components.Name:
+          {}
+        com.meta.components.Scene:
+          nodes:
+            - ref:BasketBallPrint
+            - ref:plantSansevieria
+      tag: Scene
+  com.meta.models.SceneNode:
+    - components:
+        com.iwsdk.components.DistanceGrabbable:
+          movementMode: 0
+        com.iwsdk.components.Interactable:
+          {}
+        com.meta.components.Animatable:
+          {}
+        com.meta.components.DocumentReference:
+          transformType: None
+          documentReference: projref:plantSansevieria/Main.metaspatialobj
+        com.meta.components.Name:
+          name: plantSansevieria
+        com.meta.components.PointerNodeInverseComponent:
+          {}
+        com.meta.components.SceneNode:
+          rotation.format: Euler
+          scale:
+            - 1
+            - 1
+            - 1
+          translation:
+            - 1.20000005
+            - 0.850000024
+            - -1.79999995
+          componentVersion: 1
+        com.meta.components.Visibility:
+          visible: true
+      tag: plantSansevieria
+    - components:
+        com.meta.components.Animatable:
+          {}
+        com.meta.components.DocumentReference:
+          transformType: None
+          documentReference: projref:BasketBallPrint/Main.metaspatialobj
+        com.meta.components.Name:
+          name: BasketBallPrint
+        com.meta.components.PointerNodeInverseComponent:
+          {}
+        com.meta.components.SceneNode:
+          rotation.format: Euler
+          scale:
+            - 1
+            - 1
+            - 1
+          translation:
+            - 0
+            - 0.426447868
+            - -4.00468731
+          componentVersion: 1
+        com.meta.components.Visibility:
+          visible: true
+      tag: BasketBallPrint
+metadata:
+  version: 1.34

@@ -1,0 +1,100 @@
+scene: docref:Main.scene
+entities:
+  com.meta.models.AssetFolder:
+    - components:
+        com.meta.components.AssetFolder:
+          assets:
+            - ref:BasketBallPrint_Color
+            - ref:BasketBallPrint_Normal
+            - ref:BasketBallPrint_ORM
+            - ref:BasketBallPrint
+            - ref:BasketBallPrint_geo
+        com.meta.components.Name:
+          name: BasketBallPrint
+  com.meta.models.AssetRoot:
+    - components:
+        com.meta.components.AssetMetadata:
+          {}
+        com.meta.components.AssetRoot:
+          defaultScene: ref:Scene
+          scenes:
+            - ref:Scene
+  com.meta.models.Geometry:
+    - components:
+        com.meta.components.Geometry:
+          data: binary/Geometry.bin
+          mode: Triangles
+      tag: Geometry
+  com.meta.models.Image:
+    - components:
+        com.meta.components.Asset:
+          path: assets/BasketBallPrint_Normal.png
+        com.meta.components.Image:
+          height: 512
+          mimeType: image/png
+          width: 1024
+        com.meta.components.Name:
+          name: BasketBallPrint_Normal
+      tag: BasketBallPrint_Normal
+    - components:
+        com.meta.components.Asset:
+          path: assets/BasketBallPrint_Color.png
+        com.meta.components.Image:
+          height: 512
+          mimeType: image/png
+          width: 1024
+        com.meta.components.Name:
+          name: BasketBallPrint_Color
+      tag: BasketBallPrint_Color
+    - components:
+        com.meta.components.Asset:
+          path: assets/BasketBallPrint_ORM.png
+        com.meta.components.Image:
+          height: 512
+          mimeType: image/png
+          width: 1024
+        com.meta.components.Name:
+          name: BasketBallPrint_ORM
+      tag: BasketBallPrint_ORM
+  com.meta.models.Material:
+    - uri: docref:materials/BasketBallPrint.metaspatialmaterial
+      tag: BasketBallPrint
+  com.meta.models.Mesh:
+    - components:
+        com.meta.components.Mesh:
+          morphTargetNames:
+            []
+          morphTargetWeights:
+            []
+          primitives:
+            - ref:Primitive
+        com.meta.components.Name:
+          name: BasketBallPrint_geo
+        com.meta.components.PointerNodeInverseComponent:
+          {}
+      tag: BasketBallPrint_geo
+  com.meta.models.Primitive:
+    - components:
+        com.meta.components.Primitive:
+          geometry: ref:Geometry
+          material: ref:BasketBallPrint
+      tag: Primitive
+  com.meta.models.Sampler:
+    - components:
+        com.meta.components.Name:
+          name: sampler0
+        com.meta.components.Sampler:
+          magFilter: Linear
+          minFilter: LinearMipmapLinear
+          wrapS: Repeat
+          wrapT: Repeat
+      tag: sampler0
+  com.meta.models.Texture:
+    - uri: docref:textures/texture1.metaspatialtexture
+      tag: texture1
+    - uri: docref:textures/texture3.metaspatialtexture
+      tag: texture3
+    - uri: docref:textures/texture2.metaspatialtexture
+      tag: texture2
+metadata:
+  version: 1.34
