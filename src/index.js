@@ -12,7 +12,10 @@ import {
   SphereGeometry,
   MeshStandardMaterial,
   LocomotionEnvironment,
-  EnvironmentType
+  EnvironmentType,
+  PanelUI,
+  Interactable,
+  ScreenSpace
 } from '@iwsdk/core';
 
 
@@ -36,9 +39,8 @@ World.create(document.getElementById('scene-container'), {
     // Optional structured features; layers/local-floor are offered by default
     features: { handTracking: true, layers: false } 
   },
-  features: { locomotion: { useWorker: true }, grabbing: true, physics: true} ,
-   level:
-    '/glxf/Composition.glxf' 
+  features: { locomotion: { useWorker: true }, grabbing: true, physics: true},
+  level: '/glxf/Composition.glxf' 
 }).then((world) => {
   const { camera } = world;
   
