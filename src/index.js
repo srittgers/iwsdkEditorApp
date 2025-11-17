@@ -15,7 +15,8 @@ import {
   EnvironmentType,
   PanelUI,
   Interactable,
-  ScreenSpace
+  ScreenSpace,
+  PhysicsBody, PhysicsShape, PhysicsShapeType, PhysicsState, PhysicsSystem
 } from '@iwsdk/core';
 
 
@@ -50,14 +51,32 @@ World.create(document.getElementById('scene-container'), {
   const sphere = new Mesh(sphereGeometry, greenMaterial);
   sphere.position.set(1, 1.5, -3);
   const sphereEntity = world.createTransformEntity(sphere);
+  sphereEntity.addComponent(PhysicsShape, { shape: PhysicsShapeType.Auto,  density: 0.2,  friction: 0.5,  restitution: 0.9 });
+  sphereEntity.addComponent(PhysicsBody, { state: PhysicsState.Dynamic });
 
   // create a floor
   const floorMesh = new Mesh(new PlaneGeometry(20, 20), new MeshStandardMaterial({color:"tan"}));
   floorMesh.rotation.x = -Math.PI / 2;
   const floorEntity = world.createTransformEntity(floorMesh);
   floorEntity.addComponent(LocomotionEnvironment, { type: EnvironmentType.STATIC });
-  
+  floorEntity.addComponent(PhysicsShape, { shape: PhysicsShapeType.Auto});
+  floorEntity.addComponent(PhysicsBody, { state: PhysicsState.Static });
 
+  let numBounces = 0;
+  function gameLoop() {
+      //console.log(sphereEntity.object3D.position.y);
+      if (sphereEntity.object3D.position.y < 0.27) {
+          numBounces += 1;
+          console.log(`Sphere has bounced ${numBounces} times`);
+          //sphereEntity.destroy()
+      }
+      requestAnimationFrame(gameLoop);
+    }
+  gameLoop();
+
+
+  
+  world.registerSystem(PhysicsSystem).registerComponent(PhysicsBody).registerComponent(PhysicsShape);
   
 
 
