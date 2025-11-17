@@ -57,5 +57,4 @@ coverage/
 
 # Meta Spatial Editor exports
 public/gltf/generated/
-public/glxf/
 public/ui/
