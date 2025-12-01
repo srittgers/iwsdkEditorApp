@@ -16,7 +16,8 @@ import {
   PanelUI,
   Interactable,
   ScreenSpace,
-  PhysicsBody, PhysicsShape, PhysicsShapeType, PhysicsState, PhysicsSystem
+  PhysicsBody, PhysicsShape, PhysicsShapeType, PhysicsState, PhysicsSystem,
+  createSystem
 } from '@iwsdk/core';
 
 
@@ -63,16 +64,17 @@ World.create(document.getElementById('scene-container'), {
   floorEntity.addComponent(PhysicsBody, { state: PhysicsState.Static });
 
   let numBounces = 0;
-  function gameLoop() {
+  const GameLoopSystem = class extends createSystem() {
+    update(delta, time) {
       //console.log(sphereEntity.object3D.position.y);
       if (sphereEntity.object3D.position.y < 0.27) {
           numBounces += 1;
           console.log(`Sphere has bounced ${numBounces} times`);
           //sphereEntity.destroy()
       }
-      requestAnimationFrame(gameLoop);
     }
-  gameLoop();
+  };
+  world.registerSystem(GameLoopSystem);
 
 
   
